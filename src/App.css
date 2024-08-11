@@ -1,0 +1,125 @@
+.backgro {
+  background-color: red;
+}
+
+.navbar {
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  border-radius: 10px;
+  display: flex;
+  width: 100%;
+  background-color: rgba(207, 217, 223, 0.5);
+  z-index: 9999;
+  box-sizing: border-box;
+}
+
+.navbar_options {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.pageContainer {
+  padding-top: 7rem !important;
+  padding: 2rem;
+}
+
+.loginFormOuterContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.errorText {
+  color: red;
+  text-align: center;
+}
+
+.buttonSubmit {
+  background-color: #acd793;
+  padding: 0.5rem;
+  border-radius: 20px;
+  color: white;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.loginFormContainer {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: auto;
+}
+
+.inputLabel {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginRow2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.loginRow2 span {
+  font-size: x-small;
+  cursor: pointer;
+}
+
+.loginRow2 span:hover {
+  color: red;
+}
+
+.inputLabel input {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid;
+}
+
+.inputLabel select {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid;
+}
+
+.loginFormContainer {
+}
+
+.registrationForm h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.conferenceDetail_row1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.conferenceDetail_row1_right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.fullPageLoading {
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
