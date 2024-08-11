@@ -4,16 +4,18 @@
 
 .navbar {
   padding: 1rem 2rem;
-  margin-top: 1rem;
+  margin: 1rem auto; /* Center horizontally */
   justify-content: space-between;
   align-items: center;
   position: fixed;
   border-radius: 10px;
   display: flex;
-  width: 100%;
+  width: 80%; /* Adjust width if needed */
   background-color: rgba(207, 217, 223, 0.5);
-  z-index: 9999;
+  z-index: 100;
   box-sizing: border-box;
+  left: 0; /* Ensure it stretches from left to right */
+  right: 0; /* Ensure it stretches from left to right */
 }
 
 .navbar_options {

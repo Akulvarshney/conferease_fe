@@ -109,7 +109,12 @@ const Login = () => {
         if (response.data.success) {
           localStorage.setItem("email", signUpEmail);
           setActiveTab("Login");
-          message.success("User registered successfully, Please Login again.");
+          notification.success(
+            "User registered successfully, Please Login again."
+          );
+          setOtp("");
+          setSignUpPassword("");
+          setSignUpRePassword("");
         } else {
           notification.error({
             message: "Password Set Failed",
@@ -119,6 +124,10 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        notification.error({
+          message: "Password Set Failed",
+          description: "Invalid OTP",
+        });
       });
   };
 
