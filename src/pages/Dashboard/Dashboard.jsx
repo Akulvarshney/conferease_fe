@@ -8,8 +8,6 @@ const { TabPane } = Tabs;
 const Dashboard = () => {
   return (
     <div className="pageContainer">
-      <p className="text-2xl">Conference List</p>
-
       <Tabs defaultActiveKey="1" className="my-5">
         <TabPane tab="My Conferences" key="1">
           <MyConferences />

@@ -1,21 +1,17 @@
-.backgro {
-  background-color: red;
-}
-
 .navbar {
   padding: 1rem 2rem;
-  margin: 1rem auto; /* Center horizontally */
+  margin: 1rem auto;
   justify-content: space-between;
   align-items: center;
   position: fixed;
   border-radius: 10px;
   display: flex;
-  width: 80%; /* Adjust width if needed */
+  width: 80%;
   background-color: rgba(207, 217, 223, 0.5);
   z-index: 100;
   box-sizing: border-box;
-  left: 0; /* Ensure it stretches from left to right */
-  right: 0; /* Ensure it stretches from left to right */
+  left: 0;
+  right: 0;
 }
 
 .navbar_options {

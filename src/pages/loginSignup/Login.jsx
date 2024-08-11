@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Tabs, Form, Input, Button, message, notification } from "antd";
+import { Tabs, Form, Input, Button, message, notification, Spin } from "antd";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -17,8 +17,10 @@ const Login = () => {
   const [signUpRePassword, setSignUpRePassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [otp, setOtp] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleLoginSubmit = () => {
+    setLoading(true);
     let data = JSON.stringify({
       email: loginEmail,
       password: loginPassword,
@@ -38,6 +40,7 @@ const Login = () => {
       .request(config)
       .then((response) => {
         console.log(JSON.stringify(response.data));
+
         if (response.data.success === true) {
           const token = response.data.token;
           localStorage.setItem("authToken", token);
@@ -54,6 +57,7 @@ const Login = () => {
           axios
             .request(userConfig)
             .then((userResponse) => {
+              setLoading(false);
               localStorage.setItem(
                 "userData",
                 JSON.stringify(userResponse.data.user)
@@ -65,11 +69,13 @@ const Login = () => {
               }
             })
             .catch((error) => {
+              setLoading(false);
               console.log("Error fetching user data:", error);
             });
         }
       })
       .catch((error) => {
+        setLoading(false);
         console.log("Login error:", error);
         notification.error({
           message: "Login Failed",
@@ -86,6 +92,7 @@ const Login = () => {
       });
       return;
     }
+    setLoading(true);
     let data = JSON.stringify({
       email: signUpEmail,
       otp: otp,
@@ -107,6 +114,7 @@ const Login = () => {
       .then((response) => {
         console.log(JSON.stringify(response.data));
         if (response.data.success) {
+          setLoading(false);
           localStorage.setItem("email", signUpEmail);
           setActiveTab("Login");
           notification.success(
@@ -116,6 +124,7 @@ const Login = () => {
           setSignUpPassword("");
           setSignUpRePassword("");
         } else {
+          setLoading(false);
           notification.error({
             message: "Password Set Failed",
             description: "Invalid OTP",
@@ -124,6 +133,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        setLoading(false);
         notification.error({
           message: "Password Set Failed",
           description: "Invalid OTP",
@@ -135,6 +145,8 @@ const Login = () => {
     let data = JSON.stringify({
       email: signUpEmail,
     });
+
+    setLoading(true);
 
     let config = {
       method: "post",
@@ -152,11 +164,13 @@ const Login = () => {
         console.log(JSON.stringify(response.data));
         if (response.data.success === true) {
           setSignUpEmailDone(true);
+          setLoading(false);
           notification.success({
             message: "Registration Successful",
             description: "Check your email for the OTP",
           });
         } else {
+          setLoading(false);
           notification.error({
             message: "Registration Failed",
             description: "User already exists",
@@ -165,6 +179,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        setLoading(false);
         notification.error({
           message: "Registration Failed",
           description: "User already exists",
@@ -211,8 +226,8 @@ const Login = () => {
             </div> */}
 
             <Form.Item>
-              <Button type="primary" htmlType="submit" block>
-                Login
+              <Button disabled={loading} type="primary" htmlType="submit" block>
+                {loading ? <Spin tip="Loading..." /> : "Login"}
               </Button>
             </Form.Item>
           </Form>
@@ -272,8 +287,13 @@ const Login = () => {
               </Form.Item>
 
               <Form.Item>
-                <Button type="primary" htmlType="submit" block>
-                  Set Password
+                <Button
+                  disabled={loading}
+                  type="primary"
+                  htmlType="submit"
+                  block
+                >
+                  {loading ? <Spin tip="Loading..." /> : "Set Password"}
                 </Button>
               </Form.Item>
             </Form>
@@ -293,8 +313,13 @@ const Login = () => {
               </Form.Item>
 
               <Form.Item>
-                <Button type="primary" htmlType="submit" block>
-                  Sign Up
+                <Button
+                  disabled={loading}
+                  type="primary"
+                  htmlType="submit"
+                  block
+                >
+                  {loading ? <Spin tip="Loading..." /> : "Sign Up"}
                 </Button>
               </Form.Item>
             </Form>

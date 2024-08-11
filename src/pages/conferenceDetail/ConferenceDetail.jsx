@@ -10,6 +10,7 @@ import {
   capitalizeFirstLetterStatus,
 } from "../../assets/constants";
 import ReviewsModal from "./ReviewsModal";
+import { fetchMyUniqueConferences } from "../../store/slices/myUniqueConferences";
 
 const { Option } = Select;
 
@@ -40,7 +41,9 @@ const ConferenceDetails = () => {
       dispatch(fetchConferenceDetails(confId));
       dispatch(userRoleForConference(confId));
     }
-    if (confId) {
+
+    if (!myConferencesState?.data) {
+      dispatch(fetchMyUniqueConferences());
     }
   }, [confId]);
 
