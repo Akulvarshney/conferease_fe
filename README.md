@@ -1,5 +1,8 @@
 # Getting Started with Create React App
 
+.env
+REACT_APP_API_URL=https://conferease-backend.onrender.com/api/v1
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
